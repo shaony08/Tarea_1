@@ -9,9 +9,9 @@
     <h1>Ejercicios de eventos es JS</h1>
     <h2>Nombre: Shaony Teresa Terry</h2>
     <div id="caja" style="width: 100px; height: 100px; background: gray;"></div>
-    <!-- Evento en línea llamando a la función de JS -->
+    <h2>Ejercicio 1: Evento en línea llamando a la función de JS </h2>
     <button onclick="alternarLuz()">Interruptor</button>
-    <!-- Completar el código para que cada vez que se pulse el botón se incremente el número --> 
+    <h2>Ejrcio 2. Completar el código para que cada vez que se pulse el botón se incremente el número </h2> 
     <p>Clics: <span id="contador">0</span></p>
     <button id="btnContar" onclick="incrementarContador()">Incrementar</button> 
     <h1>Eventos</h1>
@@ -24,7 +24,24 @@
         <input type="email" id="correo">
         <button type="submit">Enviar</button>
     </form>
-
+    <h1>Práctica: EVENTOS EN JAVASCRIPT </h1>
+    <style>
+    body.dark {
+        background-color: #222;
+        color: #fff;
+    }
+    </style>
+    <H2>1. Ejercicio: Validar que un input tenga al menos 5 caracteres </H2> 
+    <input id="texto" oninput="validarInput()"> 
+    <p id="mensaje">Este texto es ...</p>
+    <h2>2.Ejercicio: Agregar elementos a una lista al presionar un botón </h2>
+    <input id="item"> 
+    <button id="agregar">Agregar</button> 
+    <ul id="lista"></ul>
+    <h2> 3. Ejercicio: Crear un botón que cambie entre modo claro y oscuro el body de la página </h2>
+    <button id="modo">Cambiar modo</button>
+    <h2> 4. Ejercicio: Crear un contador que disminuya cada segundo desde 10 </h2>
+    <p id="tiempo">10</p>
     <input style="width: 300px;" type="label" id="lblaudio" value="" readonly>
     <script>
         function alternarLuz() {
@@ -53,6 +70,36 @@
             document.writeln(meses.value + '<br>')
             document.writeln(semanas.value + '<br>')
         });
+         // 1.
+    document.getElementById("texto") .addEventListener("keydown", () => { 
+    let valor = document.getElementById("texto").value; 
+    let mensaje = document.getElementById("mensaje"); 
+    if (valor.length < 5) { 
+        mensaje.innerText = "Muy corto!"; 
+    } else { 
+        mensaje.innerText = "Correcto!"; 
+    } 
+    });
+    // 2.
+    document.getElementById("agregar").addEventListener("click", () => { 
+    let texto = document.getElementById("item").value; 
+    let li = document.createElement("li"); 
+    li.textContent = texto; 
+    document.getElementById("lista").appendChild(li); 
+    }); 
+    // 3.
+    document.getElementById("modo").addEventListener("click", () => { 
+    document.body.classList.toggle("dark"); 
+    });
+    // 4.
+    let tiempo = 10; 
+    let intervalo = setInterval(() => { 
+    tiempo = tiempo - 1; 
+    document.getElementById("tiempo").innerText = tiempo; 
+    if (tiempo === 0) { 
+        clearInterval(intervalo); 
+    } 
+    }, 1000);
 </script>
 </body>
 </html>
